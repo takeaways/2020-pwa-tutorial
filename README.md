@@ -47,7 +47,7 @@ PWA 같이 공부해요~
 
 ### 지원 브라우저
 
-![pwa](./public/images/service_browsers.png)
+![service_browsers](./public/images/service_browsers.png)
 
 ## 2) 웹 앱 매니페스트 구성하기.
 
@@ -89,4 +89,37 @@ PWA 같이 공부해요~
 <link rel="manifest" href="/mainfest.json" />
 ```
 
-> Chrome > 검색 > Application 에서 Manifest내용을 확인 할 수 있습니다.
+![manifest](./public/images/manifest.png)
+
+> Chrome > 검색(개발자도구) > Application 에서 Manifest내용을 확인 할 수 있습니다.
+
+### 2-3) Web App Manifest 주요 구성 정보
+
+1. App Icon
+
+- 해당 웹 사이트가 모바일 화면에서 표시될 아이콘 이미지 지정
+  - src: 로딩할 이미지 파일경로
+  - type: 로딩할 이미지 타입
+  - size: 로딩할 이미지 크기
+
+```json
+{
+  "icons": [
+    {
+      "src": "images/touch/icon-128x128.png",
+      "type": "image/png",
+      "size": "128x128"
+    },
+    {
+      "src": "images/touch/icon-152x152.png",
+      "type": "image/png",
+      "size": "152x152"
+    },
+    {
+      "src": "images/touch/icon-192x192.png",
+      "type": "image/png",
+      "size": "192x192"
+    }
+  ]
+}
+```
