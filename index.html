@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/styles.css">
     <link rel="manifest" href="manifest.json">
     <title>PWA</title>
 </head>
@@ -10,5 +11,39 @@
     <header>
         <h1>PWA Tutorial</h1>
     </header>
+    <section>
+        <article>
+            <p>lorem</p>
+        </article>
+        <article>
+            <p>lorem</p>
+        </article>
+        <article>
+            <p>lorem</p>
+        </article>
+        <article>
+            <p>lorem</p>
+        </article>
+    </section>
+    <script>
+        let defferedPrompt;
+//설치 가능한지 확인
+window.addEventListener("beforeinstallprompt", (e) => {
+    console.log('beforeinstallprompt')
+  e.preventDefault();
+  defferedPrompt = e;
+});
+
+//특정 버튼 클릭 시에 앱 설치
+// btn.addEventListener("click", (e) => {
+//   defferedPrompt.prompt();
+//   defferedPrompt.userChoice.then((res) => {
+//     if (res === "accepted") {
+//       console.log("The app has been installed");
+//     }
+//     defferedPromts = null;
+//   });
+// });
+    </script>
 </body>
 </html>

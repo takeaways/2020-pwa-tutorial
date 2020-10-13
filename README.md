@@ -2,7 +2,7 @@
 
 PWA 같이 공부해요~
 
-## 1) PWA소개 🌐
+## 1) 🔥 PWA소개
 
 - 모바일 앱과 같은 경험을 주는 최신 웹 앱
 - 앱 아이콘, 앱 아이콘 설치배너, 모바일 푸시, 오프라인 경험을 제공
@@ -49,7 +49,7 @@ PWA 같이 공부해요~
 
 ![service_browsers](./public/images/service_browsers.png)
 
-## 2) 웹 앱 매니페스트 구성하기. 🌐
+## 2) 🌐 웹 앱 매니페스트 구성하기.
 
 - Web App Manifest - install Banner & App Icon
 
@@ -224,6 +224,7 @@ PWA 같이 공부해요~
   ![banner](public/images/banner.png)
 
 - Install Banner 동작 조건
+
   - 웹 사이트가 설치되어 있지 않음
     - home화면
   - 사용자가 최소 30초 이상 웹 사이트를 탐색
@@ -231,3 +232,31 @@ PWA 같이 공부해요~
   - 최소 192px 크키의 앱 아이콘 이미지
   - Service Worker의 fetch 이벤트 구현
   - HTTPS
+
+- beforeinstallprompt로 설치 배너의 표시 시기를 지연하거나 disable가능
+
+```javascript
+let defferedPrompt;
+//설치 가능한지 확인
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  defferedPrompt = e;
+});
+
+//특정 버튼 클릭 시에 앱 설치
+btn.addEventListener("click", (e) => {
+  defferedPrompt.prompt();
+  defferedPrompt.userChoice.then((res) => {
+    if (res === "accepted") {
+      console.log("The app has been installed");
+    }
+    defferedPromts = null;
+  });
+});
+```
+
+- install Banner 디버깅.
+  - 주소창 chrome://flags
+  - 설정 옵션 중 사용자 참여검사 우회 체크하여 조건 충족
+
+## 3) 🌟 Service Worker - Cahching, Offline, Native Feattures
