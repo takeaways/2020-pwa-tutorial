@@ -133,8 +133,16 @@ PWA 같이 공부해요~
 ```html
 <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
 <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png"/>
-<link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png"/>
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="touch-icon-iphone-retina.png"
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="167x167"
+  href="touch-icon-ipad-retina.png"
+/>
 ```
 
 #### 2️⃣. Launch Image - Splash Screen
@@ -251,4 +259,47 @@ btn.addEventListener("click", (e) => {
   - 주소창 chrome://flags
   - 설정 옵션 중 사용자 참여검사 우회 체크하여 조건 충족
 
-## 3) 🌟 Service Worker - Cahching, Offline, Native Feattures
+## 3) 🌟 Service Worker - Cahching, Offline, Native Features
+
+### 3-1) 소개
+
+- 브라우저와 서버 사이의 미들웨어 역할을 하는 스크립트 파일
+- PWA에서 가장 중요한 역할을 하고, Offline Expreience와 Mobile & Web Push의 기반기술]
+
+![service_worker](public/images/service_worker.png)
+
+> 브라우저와 서버 사이에 미들웨어 역할을 하는 스크립트 입니다.
+> ❗️다른 영역에 있는 자바스크립트 파일!!
+
+### 3-2) 특징
+
+- 브라우저 뒤에서 별도의 자바스크립트가 돌아가고 있다.
+  - chrome://serviceworker-internals/
+
+#### 1️⃣. 브라우저의 백그라운드에서 실행되며 웹 페이지와 별개의 라이프 싸이클을 가짐
+
+- javascript UI쓰레드랑 별도로 동작하는 또다른 쓰레드
+
+#### 2️⃣. 네트워크 요청을 가로챌 수 있어 해당 자원에 대한 "캐쉬" 제공 또는 서버에 자원 요청
+
+- 프로그래밍 가능한 네트워크 프록시
+  > 중계서버: 클라이언트가 자신을 통해서 다른 네트워크 서비스에 간접적으로 접속할 수 있게 해주는 컴퓨터는 응용 프로그램을 가리킨다.
+
+#### 3️⃣. 브라우저 종속적인 생명주기로 백그라운드 동기화 기능 제공
+
+- Push알람의 진입점을 제공
+- 브라우저가 끝나야 종료된다.
+
+#### 4️⃣. Web & Mobile Push 수신이 가능라도록 Notification 제공
+
+#### 5️⃣. navigator.serviceworker로 접근
+
+- navigator 브라우저에 접근할 수 있는 객체
+
+#### 6️⃣. 기존 javascript와의 별개의 자체 스코프를 가짐
+
+- 크롬 개발자 도구의 Console과의 별개의 서비스 워커 전용 Console 존재
+
+#### 7️⃣. Dom에 직접적으로 접근이 불가능 - postMessage() 이용
+
+#### 8️⃣. 사용하지 않을 떄 자체적으로 종료, 필요시에 다시 동작 (event-griven 방식)
