@@ -1,0 +1,25 @@
+{
+  "name": "pwa-my-web",
+  "version": "0.0.1",
+  "description": "pwa공부하기",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server -c bs-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomadGeonilJang/pwa-my-web.git"
+  },
+  "keywords": [
+    "pwa"
+  ],
+  "author": "GeonilJang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nomadGeonilJang/pwa-my-web/issues"
+  },
+  "homepage": "https://github.com/nomadGeonilJang/pwa-my-web#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}

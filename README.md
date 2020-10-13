@@ -53,7 +53,7 @@ PWA 같이 공부해요~
 
 - Web App Manifest - install Banner & App Icon
 
-### Web App Manifest 란?
+### 2-1) Web App Manifest 란?
 
 - Progressive Web App의 설치와 앱 구성정보를 담고 있는 Json형식의 설정파일
   - 앱 아이콘, 화면 런쳐방식 및 배경색, 시작페이지 등을 설정할 수 있는 JSON파일
@@ -80,3 +80,11 @@ PWA 같이 공부해요~
     "start_url": "./"
   }
   ```
+
+### 2-2) Web App Manifest 파일 등록
+
+- 메인 HTML 파일의 head에 meta 태그 추가
+
+```html
+<link rel="manifest" href="/mainfest.json" />
+```
