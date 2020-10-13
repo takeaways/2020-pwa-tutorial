@@ -95,7 +95,7 @@ PWA 같이 공부해요~
 
 ### 2-3) Web App Manifest 주요 구성 정보
 
-#### 1. App Icon
+#### 1️⃣. App Icon
 
 - 해당 웹 사이트가 모바일 화면에서 표시될 아이콘 이미지 지정
 
@@ -145,7 +145,7 @@ PWA 같이 공부해요~
 />
 ```
 
-#### 2. Launch Image - Splash Screen
+#### 2️⃣. Launch Image - Splash Screen
 
 - 웹앱이 시작될 때 거치는 시작 화면을 설정 가능
 - 모바일 앱의 시작과 동일한 느낌을 가져감
@@ -157,3 +157,61 @@ PWA 같이 공부해요~
   - 아이콘은 icon에 지정한 이미지 중 128dp = 192px에 가장 가까운 크기로 지정
   - 따라서, 192px 크기의 이미지는 꼭 지정
     > dp: 다양한 모바일 화면 크기에 동일한 비율로 출력되게 하는 픽셀단위
+
+#### 3️⃣. Start URL
+
+- 앱이 시작될 때 로딩될 페이지 위치 지정
+
+```json
+{ "start_url": "./" }
+```
+
+- GA 분석이나 기타 목적으로 query string을 뒤에 붙일 수 있다.
+
+```json
+{ "start_url": "index.html?q=hello" }
+```
+
+#### 4️⃣. Display Type
+
+- 웹앱 화면의 전체적인 모양을 정할 수 있다.
+- 웹앱이 모바일 앱의 느낌을 가져갈 수 있도록 결정짓는 속성
+  - standalone: 상단 URL바 제거 하여 네이티브 앱 느낌제공
+  - browser: 해당 OS브라우저에서 웹앱 실행
+  - fullscreen: 크롬이 아닌 기타 브라우저에서 네이티브 앱 느낌 제공
+  - minimul-ui: fullscreen과 비슷하나 네이게이션 관련 최소 UI를 제공
+
+```json
+{ "display": "standalone" }
+```
+
+![display_type](./public/images/display_type.png)
+
+#### ❗️❗️❗️ 주의 사항 ❗️❗️❗️
+
+- IOS에서 standalone 사용시
+  - a tag를 이용한 네비케이션 이동 시 새 브라우저 열기로 인해 context를 잃게 됨.
+  - location.href 또는 SPA를 이용한 네비게이팅으로 전체 UX를 가져갈 필요가 있음
+
+```html
+<meta name="apple-mobile-web-app-capable" content="yes" />
+```
+
+#### 5️⃣. Theme Color
+
+- theme-color를 이용하여 앱 테마 색상을 정의할 수 있다.
+- 홈 화면에서 시작해야 설정한 도메인의 모든 페이지에 적용됨.
+
+```json
+{ "theme-color": "#0093FB" }
+```
+
+#### 6️⃣. Display Orientation
+
+- 화면 방향은 orientation 속성을 이용하고 옵션 값은 아래와 같다.
+  - portrait: 세로방향
+  - landscap: 가로방향
+
+```json
+{ "orientation": "landscap" }
+```

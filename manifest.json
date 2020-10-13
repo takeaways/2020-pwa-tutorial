@@ -17,5 +17,7 @@
             "sizes":"256x256"
         }
     ],
-    "background_color":"#FDFDFD"
+    "background_color":"#FDFDFD",
+    "start_url":"./",
+    "display":"standalone"
 }
