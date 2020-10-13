@@ -2,7 +2,7 @@
 
 PWA 같이 공부해요~
 
-## 1) PWA소개
+## 1) 🌐PWA소개
 
 - 모바일 앱과 같은 경험을 주는 최신 웹 앱
 - 앱 아이콘, 앱 아이콘 설치배너, 모바일 푸시, 오프라인 경험을 제공
@@ -49,7 +49,7 @@ PWA 같이 공부해요~
 
 ![service_browsers](./public/images/service_browsers.png)
 
-## 2) 웹 앱 매니페스트 구성하기.
+## 2) 🌐웹 앱 매니페스트 구성하기.
 
 - Web App Manifest - install Banner & App Icon
 
