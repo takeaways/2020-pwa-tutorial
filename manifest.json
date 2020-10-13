@@ -16,5 +16,6 @@
             "type":"image/png",
             "sizes":"256x256"
         }
-    ]
+    ],
+    "background_color":"#FDFDFD"
 }
