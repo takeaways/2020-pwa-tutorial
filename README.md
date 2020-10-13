@@ -95,9 +95,10 @@ PWA 같이 공부해요~
 
 ### 2-3) Web App Manifest 주요 구성 정보
 
-1. App Icon
+#### 1. App Icon
 
 - 해당 웹 사이트가 모바일 화면에서 표시될 아이콘 이미지 지정
+
   - src: 로딩할 이미지 파일경로
   - type: 로딩할 이미지 타입
   - size: 로딩할 이미지 크기
@@ -123,3 +124,36 @@ PWA 같이 공부해요~
   ]
 }
 ```
+
+#### ❗️❗️❗️ 주의 사항 ❗️❗️❗️
+
+- app icon 미지정시 html파일의 link rel="icon"> 태그를 검색한다.
+- Safari의 경우 아래의 meta 태그를 head에 별로돌 추가해 주어야 한다.
+
+```html
+<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="touch-icon-iphone-retina.png"
+/>
+<link
+  rel="apple-touch-icon"
+  sizes="167x167"
+  href="touch-icon-ipad-retina.png"
+/>
+```
+
+#### 2. Launch Image - Splash Screen
+
+- 웹앱이 시작될 때 거치는 시작 화면을 설정 가능
+- 모바일 앱의 시작과 동일한 느낌을 가져감
+- 화면의 조합: 아이콘 + 배경색 + 아이콘 이름
+  - 배경색 설정의 <b>background_color</b>속성 이용
+  ```json
+  { "background_color": "#FFF" }
+  ```
+  - 아이콘은 icon에 지정한 이미지 중 128dp = 192px에 가장 가까운 크기로 지정
+  - 따라서, 192px 크기의 이미지는 꼭 지정
+    > dp: 다양한 모바일 화면 크기에 동일한 비율로 출력되게 하는 픽셀단위
