@@ -26,24 +26,17 @@
         </article>
     </section>
     <script>
-        let defferedPrompt;
-//설치 가능한지 확인
-window.addEventListener("beforeinstallprompt", (e) => {
-    console.log('beforeinstallprompt')
-  e.preventDefault();
-  defferedPrompt = e;
-});
-
-//특정 버튼 클릭 시에 앱 설치
-// btn.addEventListener("click", (e) => {
-//   defferedPrompt.prompt();
-//   defferedPrompt.userChoice.then((res) => {
-//     if (res === "accepted") {
-//       console.log("The app has been installed");
-//     }
-//     defferedPromts = null;
-//   });
-// });
+        //service worker 등록하기
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker
+            .register('sw.js')
+            .then(()=>{
+                console.log("Okey!")
+            }).catch(error=>{
+                cosole.log("FAIL",error)
+            })
+        }
+    
     </script>
 </body>
 </html>
