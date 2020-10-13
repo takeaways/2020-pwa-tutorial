@@ -319,3 +319,17 @@ btn.addEventListener("click", (e) => {
   - Javascript UI쓰레드와 별개의 쓰레드. Global script scope
   - 페이지에 비종속적
   - 직접 Dom 접근불가.
+
+```javascript
+//service worker 등록하기
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("sw.js")
+    .then(() => {
+      console.log("Okey!");
+    })
+    .catch((error) => {
+      cosole.log("FAIL", error);
+    });
+}
+```
