@@ -36,6 +36,7 @@ article {
   margin: 0 auto;
   height: 300px;
   width: 90%;
+  max-width: 520px;
   background-color: blue;
   margin-bottom: 15px;
   display: flex;
