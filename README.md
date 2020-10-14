@@ -1,6 +1,4 @@
-# pwa-my-web
-
-PWA 같이 공부해요~
+# PWA Tutorial
 
 ## 1) 🔥 PWA소개
 
