@@ -44,6 +44,7 @@ article {
   transition: 1s;
   background-size: cover;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 article:nth-child(1) {
