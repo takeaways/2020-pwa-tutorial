@@ -59,9 +59,9 @@ article:hover {
 }
 
 footer {
-  height: 30px;
-  line-height: 30px;
-  color: white;
+  height: 45px;
+  line-height: 45px;
+  color: cornflowerblue;
   text-align: center;
-  background-color: tomato;
+  border-top: 2px solid lightgray;
 }
