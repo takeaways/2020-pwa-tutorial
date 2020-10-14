@@ -45,6 +45,7 @@ article {
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 article:nth-child(1) {
