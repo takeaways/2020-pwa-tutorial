@@ -46,6 +46,7 @@ article {
   transition: 1s;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   cursor: pointer;
   border-radius: 15px;
 }
