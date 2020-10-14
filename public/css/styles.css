@@ -33,12 +33,23 @@ section {
 
 article {
   margin: 0 auto;
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 90%;
   background-color: blue;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  transition: 1s;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+article:nth-child(1) {
+  margin-top: 15px;
+}
+
+article:hover {
+  transform: scale(1.012);
 }

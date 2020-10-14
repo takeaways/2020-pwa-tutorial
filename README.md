@@ -320,6 +320,10 @@ btn.addEventListener("click", (e) => {
   - 페이지에 비종속적
   - 직접 Dom 접근불가.
 
+### 3-4) 사용하기
+
+#### 1️⃣. service worker 등록하기
+
 ```javascript
 //service worker 등록하기
 if ("serviceWorker" in navigator) {
@@ -333,3 +337,23 @@ if ("serviceWorker" in navigator) {
     });
 }
 ```
+
+#### 2️⃣. service worker 설치
+
+- register() 에서 등록한 스크립트 파일에서 install 호출
+
+```javascript
+const CACHE_NAME = "cache-1"; //캐쉬를 담을 파일명 정의
+const filesToCache = [
+  //캐쉬 할 웹 자원들 정의
+  "/",
+  "/js/app.js",
+  "/css/styles.css",
+];
+
+self.addEventListener("install", (event) => {
+  //캐쉬 등록 또는 기타 로직 수행
+});
+```
+
+> self:
