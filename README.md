@@ -345,6 +345,7 @@ if ("serviceWorker" in navigator) {
 //sw.js
 const CACHE_NAME = "pwa-offline-v1"; //캐쉬를 담을 파일명 정의
 const filesToCache = [
+  //❗️sw-toolbox 사용가능
   //캐쉬 할 웹 자원들 목록
   "/", //index.html을 담당
   "/public/css/styles.css",
@@ -370,3 +371,5 @@ self.addEventListener("install", (event) => {
 ```
 
 > self: 서비스 워커파일에서 window를 바라 보게 됩니다.
+
+#### 3️⃣. service worker fetch api
