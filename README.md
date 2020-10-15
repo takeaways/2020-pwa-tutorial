@@ -323,6 +323,7 @@ btn.addEventListener("click", (e) => {
 #### 1️⃣. service worker 등록하기
 
 ```javascript
+//index.html
 //service worker 등록하기
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
@@ -341,17 +342,31 @@ if ("serviceWorker" in navigator) {
 - register() 에서 등록한 스크립트 파일에서 install 호출
 
 ```javascript
-const CACHE_NAME = "cache-1"; //캐쉬를 담을 파일명 정의
+//sw.js
+const CACHE_NAME = "pwa-offline-v1"; //캐쉬를 담을 파일명 정의
 const filesToCache = [
-  //캐쉬 할 웹 자원들 정의
-  "/",
-  "/js/app.js",
-  "/css/styles.css",
+  //캐쉬 할 웹 자원들 목록
+  "/", //index.html을 담당
+  "/public/css/styles.css",
 ];
-
+// 서비스 워커 설치 (웹 자원 캐싱)
 self.addEventListener("install", (event) => {
-  //캐쉬 등록 또는 기타 로직 수행
+  console.dir(event);
+  event.waitUntil(
+    //끝나기 전까지는 이벤트가 끝나지 않는다.
+    //caches 브라우져 예약어
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => {
+        //캐쉬를 열고 접근 할 수 있는 캐쉬를 얻을 수 있다.
+        //캐쉬에 넣어라
+        return cache.addAll(filesToCache);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  );
 });
 ```
 
-> self:
+> self: 서비스 워커파일에서 window를 바라 보게 됩니다.
