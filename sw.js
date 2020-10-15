@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-offline-v1'; //캐쉬를 담을 파일명 정의
+const CACHE_NAME = 'pwa-offline-v2'; //캐쉬를 담을 파일명 정의
 const filesToCache = [ //캐쉬 할 웹 자원들 목록
     '/', //index.html을 담당
     '/public/css/styles.css',

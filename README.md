@@ -398,3 +398,13 @@ self.addEventListener("fetch", (event) => {
   );
 });
 ```
+
+#### 4️⃣. service worker activate api 🎈
+
+- Service Worker 활성화 및 업데이트
+  - 새로운 서비스워커가 설치되면 활성화 단계로 넘어온다.
+  - 이전에 사용하던 서비스워커와 이전 캐쉬는 모두 삭제하는 작업 진행
+
+```javascript
+
+```
