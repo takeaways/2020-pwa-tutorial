@@ -453,6 +453,8 @@ self.addEventListener("activate", (event) => {
 
 ### 4-2) sw-prechache [old]
 
+#### 1️⃣. sw-prechache 만을 이용해서 사용하기.
+
 [sw-prechache](https://github.com/GoogleChromeLabs/sw-precache)
 
 - 웹 자원을 런타임 시점 이전에 사전 캐싱 가능한 서비스워커 생성 모듈
@@ -491,6 +493,8 @@ module.exports = {
 }
 // sevice-worker.js 파일이 생성됨을 확인 할 수 있다.
 ```
+
+#### 2️⃣. sw-prechache 웹팩을 같이 사용하기.
 
 ### 4-3) ⭐️workbox [new]
 
