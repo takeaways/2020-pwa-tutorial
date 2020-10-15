@@ -1,5 +1,5 @@
 const path = require("path");
-const SWPrechacheWebpackPlugin = require("sw-precache-webpack-plugin");
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
     
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     plugins:[
-        new SWPrechacheWebpackPlugin({
+        new SWPrecacheWebpackPlugin({
             cacheId:'pwa-online-v4',
             filename:'service-worker.js',
             staticFileGlobs:[   
@@ -23,7 +23,8 @@ module.exports = {
                 'manifest.json',
                 'public/css/*.css',
                 'public/images/**.*'],
-            mergeStaticsConfig:true
+            mergeStaticsConfig:true,
+            
         })
     ]
 }
