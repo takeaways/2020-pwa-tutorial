@@ -405,6 +405,39 @@ self.addEventListener("fetch", (event) => {
   - 새로운 서비스워커가 설치되면 활성화 단계로 넘어온다.
   - 이전에 사용하던 서비스워커와 이전 캐쉬는 모두 삭제하는 작업 진행
 
-```javascript
+> 기존에 실행 중인 서비스워커와 사이즈를 비교하여 1바이트라도 차이가 나면 새 것의 워커로 간주 한다.
 
+```javascript
+// 불필요한 캐쉬 제거
+self.addEventListener("activate", (event) => {
+  const newCacheList = [CACHE_NAME];
+  event.waitUntil(
+    //promise를 리턴 하기 전짜기 동작을 보당 해준다.
+    caches
+      .keys()
+      .then((cacheList) => {
+        return Promise.all(
+          cacheList.map((cacheName) => {
+            if (newCacheList.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+      .catch(console.error)
+  );
+});
 ```
+
+#### 5️⃣. service worker Life Cycle 🎈
+
+- 💥서비스워커는 웹 페이지와 별개의 생명주기를 갖는다.
+  - Tab을 닫더라도 브라우저가 종료되지 않는 동안은 서비스 워커는 살아 남아 있다.
+- 서비스워커 등록 & 설치 & 활성화 과정은 당음과 같다.
+  1. 웹페이지에서 서비스워커 스크립트 호출
+  2. 브라우저 백그라운드에서 서비스워커 설치
+  3. 설치 과정에서 정적 자원캐싱 (Cache 실패시 install 실패)
+  - html, css, js, img.....
+  4. 설치 후 활성화. 네트워크 요청에 대한 가로채기 가능
+- 사용하지 않을 때는 휴지 상태. 필요시에만 해당 기능 수행
+- 메모리 상태에 따라 자체적으로 종료하는 기능
