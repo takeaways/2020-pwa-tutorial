@@ -444,3 +444,54 @@ self.addEventListener("activate", (event) => {
   4. 설치 후 활성화. 네트워크 요청에 대한 가로채기 가능
 - 사용하지 않을 때는 휴지 상태. 필요시에만 해당 기능 수행
 - 메모리 상태에 따라 자체적으로 종료하는 기능
+
+## 4) ✨ Service Worker Library
+
+### 4-1) sw-toolbox [old]
+
+[sw-toolbox](https://github.com/GoogleChromeLabs/sw-toolbox)
+
+### 4-2) sw-prechache [old]
+
+[sw-prechache](https://github.com/GoogleChromeLabs/sw-precache)
+
+- 웹 자원을 런타임 시점 이전에 사전 캐싱 가능한 서비스워커 생성 모듈
+- sw toolbox 라이브러리와 같이 사용가능
+- 캐싱 시점을 런타임 이전 또는 러타임 시로 변경 가능
+- Chace First Strategy
+
+```bash
+# install
+npm i -D sw-precache
+npm i -g sw-precache
+```
+
+- sw-config.js 파일을 생성하여 내부에 캐싱할 정보들을 입력해준다.
+
+```js
+//cache할 내용
+module.exports = {
+  staticFileGlobs: [
+    "index.html",
+    "manifest.json",
+    "public/css/*.css",
+    "public/images/**.*",
+  ],
+};
+```
+
+- 실행 시키기
+
+```json
+//package.json
+{
+  "scripts": {
+    "pre": "sw-precache --config sw-config.js"
+  }
+}
+// sevice-worker.js 파일이 생성됨을 확인 할 수 있다.
+```
+
+### 4-3) ⭐️workbox [new]
+
+[workbox](https://developers.google.com/web/tools/workbox/)

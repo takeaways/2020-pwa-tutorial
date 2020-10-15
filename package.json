@@ -4,7 +4,8 @@
   "description": "pwa공부하기",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server -c bs-config.js"
+    "dev": "lite-server -c bs-config.js",
+    "pre":"sw-precache --config sw-config.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/nomadGeonilJang/pwa-my-web#readme",
   "devDependencies": {
-    "lite-server": "^2.5.4"
+    "lite-server": "^2.5.4",
+    "sw-precache": "^5.2.1"
   }
 }
