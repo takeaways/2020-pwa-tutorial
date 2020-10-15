@@ -349,6 +349,9 @@ const filesToCache = [
   //캐쉬 할 웹 자원들 목록
   "/", //index.html을 담당
   "/public/css/styles.css",
+  "/public/images/banner.png",
+  "/public/images/manifest.png",
+  "/public/images/pwa.png",
 ];
 // 서비스 워커 설치 (웹 자원 캐싱)
 self.addEventListener("install", (event) => {
@@ -380,16 +383,16 @@ self.addEventListener("install", (event) => {
 
 ![model](public/images/model.png)
 
-> 참고
->
-> - [event.respondWith()](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
+> <b>참고</b><br/> [event.respondWith()](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
 
 ```javascript
 self.addEventListener("fetch", (event) => {
   console.log("fetch", event.request);
   event.respondWith(
     caches
-      .match(event.request) //cache에 내용이있다면 요청 보내지 않는다.
+      .match(event.request) //fetch request를 보내는 내용
+      //값이 있다면 캐쉬 내용을 전달 하고
+      //없다면 fetch 요청을 보내서 자원을 요청한다.
       .then((response) => response || fetch(event.request))
       .catch(console.error)
   );
