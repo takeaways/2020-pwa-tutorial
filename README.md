@@ -364,7 +364,7 @@ self.addEventListener("install", (event) => {
         return cache.addAll(filesToCache);
       })
       .catch((error) => {
-        console.log(error);
+        return console.log(error);
       })
   );
 });
@@ -372,4 +372,26 @@ self.addEventListener("install", (event) => {
 
 > self: 서비스 워커파일에서 window를 바라 보게 됩니다.
 
-#### 3️⃣. service worker fetch api
+#### 3️⃣. service worker fetch api 🎈
+
+- 서비스워커 설치 후 개쉬된 자원에 대한 네트워크 요청이 있을 떄는 캐쉬로 돌려준다.
+  - 브라우저와 서버 사이의 미들웨어 역할을 하는 스크르비트 파일
+  - 🌟PWA에서 가장 중요한 역할을 하고, Offline Experience와 Mobile & Web Push의 기반 기술
+
+![model](public/images/model.png)
+
+> 참고
+>
+> - [event.respondWith()](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
+
+```javascript
+self.addEventListener("fetch", (event) => {
+  console.log("fetch", event.request);
+  event.respondWith(
+    caches
+      .match(event.request) //cache에 내용이있다면 요청 보내지 않는다.
+      .then((response) => response || fetch(event.request))
+      .catch(console.error)
+  );
+});
+```
