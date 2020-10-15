@@ -431,6 +431,8 @@ self.addEventListener("activate", (event) => {
 
 #### 5️⃣. service worker Life Cycle 🎈
 
+![lifecycle](public/images/lifecycle.png)
+
 - 💥서비스워커는 웹 페이지와 별개의 생명주기를 갖는다.
   - Tab을 닫더라도 브라우저가 종료되지 않는 동안은 서비스 워커는 살아 남아 있다.
 - 서비스워커 등록 & 설치 & 활성화 과정은 당음과 같다.
