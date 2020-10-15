@@ -219,7 +219,8 @@
 - PWA가 모바일 적인 특징을 가지는 큰 부분중 하나
 - 기본 모바일 앱 개발 주기: 구현 > SDK 빌드 > 스토어 배포 > 검색 > 앱 다운 > 설치 > 사용
 - PWA의 앱 개발 주기: 구현 > 사이트 배포 > 검색 > 사용(자동설치⁉️)
-  ![banner](public/images/banner.png)
+
+![banner](public/images/banner.png)
 
 - Install Banner 동작 조건
 
