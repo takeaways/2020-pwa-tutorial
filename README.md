@@ -35,7 +35,7 @@
 
 ### 적용사례
 
-- instagram, uber, twitter...
+- instagram, uber, twitter..
 
 ### 제작기술
 
