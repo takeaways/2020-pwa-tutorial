@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/nomadGeonilJang/pwa-my-web#readme",
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "lite-server": "^2.5.4",
     "sw-precache": "^5.2.1",
     "sw-precache-webpack-plugin": "^1.0.0",

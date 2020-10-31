@@ -1,31 +1,26 @@
 const path = require("path");
-const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
 module.exports = {
   mode: "none",
   entry: {
-    main: path.resolve(__dirname, "public/js/app.js"),
+    main: path.resolve(__dirname, "./src/app.js"),
   },
 
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundles.js",
-    publicPath: "/dist/",
+    publicPath: "dist/",
   },
 
-  // plugins:[
-  //     new SWPrecacheWebpackPlugin({
-  //         cacheId:'pwa-online-v4',
-  //         filename:'service-worker.js',
-  //         staticFileGlobs:[
-  //             'index.html',
-  //             'manifest.json',
-  //             'public/css/*.css',
-  //             'public/images/**.*'],
-  //         mergeStaticsConfig:true,
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg)$/i,
+        use: ["file-loader"],
+      },
+    ],
+  },
 
-  //     })
-  // ]
   devServer: {
     publicPath: "/dist/",
     inline: true,

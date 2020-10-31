@@ -19,13 +19,14 @@ a {
 .global-nav {
   height: 44px;
   padding: 0 1rem;
-
+  z-index: 10;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 }
 .local-nav {
+  z-index: 11;
   height: 52px;
   padding: 0 1rem;
   border-bottom: 1px solid #ddd;
@@ -97,7 +98,19 @@ div.sticky-elem {
   font-size: 1rem;
 }
 /* section 0 */
+.sticky-elem-canvas {
+  top: 0;
+  height: 100%;
+}
+.sticky-elem-canvas canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 #scroll-section-0 h1 {
+  position: relative;
+  top: -10vh;
+  z-index: 5;
   font-size: 4rem;
   text-align: center;
 }
@@ -110,6 +123,15 @@ div.sticky-elem {
   height: 100px;
   background-color: rgb(29, 29, 31);
 }
+#scroll-section-2 .b {
+  top: 10%;
+  left: 40%;
+}
+#scroll-section-2 .c {
+  top: 15%;
+  left: 45%;
+}
+
 /* section 1 */
 .description {
   padding: 0 1rem;
@@ -186,5 +208,12 @@ div.sticky-elem {
   }
   .canvas-caption {
     font-size: 2rem;
+  }
+  #scroll-section-2 .b {
+    top: 20%;
+    left: 52%;
+  }
+  #scroll-section-2 .c {
+    left: 55%;
   }
 }
