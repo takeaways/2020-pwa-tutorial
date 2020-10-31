@@ -18,6 +18,13 @@ function setCanvasImages() {
     imgElem.src = `public/video/001/IMG_${6726 + i}.JPG`;
     sceneInfo[0].objs.videoImages.push(imgElem);
   }
+  let imgElem2;
+  for (let i = 0; i < sceneInfo[2].values.videoImageCount; i++) {
+    imgElem2 = new Image();
+    imgElem2.src = `public/video/002/IMG_${7027 + i}.JPG`;
+    sceneInfo[2].objs.videoImages.push(imgElem2);
+  }
+  console.log(sceneInfo[2].objs.videoImages);
 }
 setCanvasImages();
 
@@ -68,6 +75,7 @@ function setLayout() {
 
   const heightRatio = window.innerHeight / 1080;
   sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%,0) scale(${heightRatio})`;
+  sceneInfo[2].objs.canvas.style.transform = `translate3d(-50%, -50%,0) scale(${heightRatio})`;
 }
 
 function playAnimation() {
@@ -176,7 +184,22 @@ function playAnimation() {
       }
       break;
     case 2:
-      // console.log('2 play');
+      let sequence2 = Math.round(
+        calcValues(values.imageSequence, currentYOffset)
+      );
+      objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
+      if (scrollRatio <= 0.5) {
+        objs.canvas.style.opacity = calcValues(
+          values.canvas_opacity_in,
+          currentYOffset
+        );
+      } else {
+        objs.canvas.style.opacity = calcValues(
+          values.canvas_opacity_out,
+          currentYOffset
+        );
+      }
+
       if (scrollRatio <= 0.32) {
         // in
         objs.messageA.style.opacity = calcValues(
@@ -300,4 +323,5 @@ window.addEventListener("resize", setLayout);
 window.addEventListener("load", () => {
   setLayout();
   sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
+  sceneInfo[2].objs.context.drawImage(sceneInfo[2].objs.videoImages[0], 0, 0);
 });
