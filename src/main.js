@@ -15,7 +15,7 @@ function setCanvasImages() {
   let imgElem;
   for (let i = 0; i < sceneInfo[0].values.videoImageCount; i++) {
     imgElem = new Image();
-    imgElem.src = `public/video/001/IMG_${6726 + i}.JPG`;
+    imgElem.src = `public/video/love/${1000 + i}.jpg`;
     sceneInfo[0].objs.videoImages.push(imgElem);
   }
   let imgElem2;

@@ -14,8 +14,8 @@ export const sceneInfo = [
       videoImages: [],
     },
     values: {
-      videoImageCount: 300,
-      imageSequence: [0, 299],
+      videoImageCount: 17,
+      imageSequence: [0, 16],
       canvas_opacity: [1, 0, { start: 0.9, end: 1 }],
       messageA_opacity_in: [0, 1, { start: 0.1, end: 0.2 }],
       messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],

@@ -24,15 +24,17 @@ a {
   top: 0;
   left: 0;
   width: 100%;
+  background-color: white;
 }
 .local-nav {
   z-index: 11;
+  background-color: white;
   height: 52px;
   padding: 0 1rem;
   border-bottom: 1px solid #ddd;
 
   position: absolute;
-  top: 45px;
+  top: 44px;
   left: 0;
   width: 100%;
 }
@@ -86,6 +88,7 @@ div.sticky-elem {
   margin-bottom: 1rem;
   opacity: 0;
   top: 35vh;
+  color: white;
 }
 .main-message p {
   font-weight: bold;
@@ -108,6 +111,7 @@ div.sticky-elem {
   left: 50%;
 }
 #scroll-section-0 h1 {
+  color: white;
   position: relative;
   top: -10vh;
   z-index: 5;
