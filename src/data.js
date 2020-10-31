@@ -89,8 +89,8 @@ export const sceneInfo = [
       canvas: document.querySelector(".image-blend-canvas"),
       context: document.querySelector(".image-blend-canvas").getContext("2d"),
       imagesPath: [
-        "public/images/blend-image-1.jpg",
-        "public/images/blend-image-2.jpg",
+        "public/images/blend-image-1.v1.png",
+        "public/images/blend-image-2.v1.png",
       ],
       images: [],
     },

@@ -5,6 +5,11 @@ let prevScrollHeight = 0;
 let currentScene = 0;
 let enterNewScene = false;
 
+let acc = 0.1;
+let delayedYOffset = 0;
+let rafId;
+let rafState;
+
 function calcValues(values, currentYOffset) {
   let rv;
   const scrollHeight = sceneInfo[currentScene].scrollHeight;
@@ -71,10 +76,10 @@ function playAnimation() {
 
   switch (currentScene) {
     case 0: {
-      let sequence = Math.round(
-        calcValues(values.imageSequence, currentYOffset)
-      );
-      objs.context.drawImage(objs.videoImages[sequence], 0, 0);
+      // let sequence = Math.round(
+      //   calcValues(values.imageSequence, currentYOffset)
+      // );
+      // objs.context.drawImage(objs.videoImages[sequence], 0, 0);
       objs.canvas.style.opacity = calcValues(
         values.canvas_opacity,
         currentYOffset
@@ -170,10 +175,10 @@ function playAnimation() {
       break;
     }
     case 2: {
-      let sequence2 = Math.round(
-        calcValues(values.imageSequence, currentYOffset)
-      );
-      objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
+      // let sequence2 = Math.round(
+      //   calcValues(values.imageSequence, currentYOffset)
+      // );
+      // objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
       if (scrollRatio <= 0.5) {
         objs.canvas.style.opacity = calcValues(
           values.canvas_opacity_in,
@@ -443,6 +448,7 @@ function playAnimation() {
 function scrollLoop() {
   enterNewScene = false;
   prevScrollHeight = 0;
+
   for (let i = 0; i < currentScene; i++) {
     prevScrollHeight += sceneInfo[i].scrollHeight;
   }
@@ -467,6 +473,7 @@ const handleScroll = () => {
     scrollLoop();
   });
 };
+
 function setCurrent() {
   document
     .querySelector("body")
@@ -493,15 +500,53 @@ function setCanvasImages() {
     sceneInfo[3].objs.images.push(imgElem3);
   }
 }
+function loop() {
+  if (!enterNewScene) {
+    if (currentScene === 0 || currentScene === 2) {
+      delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * acc;
+      const currentYOffset = delayedYOffset - prevScrollHeight;
+      const objs = sceneInfo[currentScene].objs;
+      const values = sceneInfo[currentScene].values;
+      let sequence = Math.round(
+        calcValues(values.imageSequence, currentYOffset)
+      );
+      if (objs.videoImages[sequence]) {
+        objs.context.drawImage(objs.videoImages[sequence], 0, 0);
+      }
+    }
+  }
+
+  rafId = requestAnimationFrame(loop);
+
+  if (Math.abs(yOffset - delayedYOffset < 1)) {
+    cancelAnimationFrame(rafId);
+    rafState = false;
+  }
+}
 
 window.addEventListener("scroll", () => {
   checkMenu();
   handleScroll();
+  if (!rafState) {
+    rafId = requestAnimationFrame(loop);
+    rafState = true;
+  }
 });
-window.addEventListener("resize", setLayout);
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 600) {
+    setLayout();
+  }
+  sceneInfo[3].values.rectStartY = 0;
+});
+window.addEventListener("orientationchange", setLayout);
 window.addEventListener("load", () => {
+  document.body.classList.remove("before-load");
+
   setLayout();
   sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   sceneInfo[2].objs.context.drawImage(sceneInfo[2].objs.videoImages[0], 0, 0);
+});
+document.querySelector(".loading").addEventListener("transitionend", (e) => {
+  document.body.removeChild(e.currentTarget);
 });
 setCanvasImages();

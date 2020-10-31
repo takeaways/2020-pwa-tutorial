@@ -202,6 +202,53 @@ a {
   color: white;
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background: white;
+  opacity: 0;
+  transition: 0.5s;
+}
+.loading-circle {
+  width: 54px;
+  height: 54px;
+  animation: loading-spin 3s infinite;
+}
+.loading-circle circle {
+  stroke: black;
+  stroke-width: 4;
+  fill: none;
+
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  animation: loading-circle-ani 1s infinite;
+}
+.before-load .loading {
+  opacity: 1;
+}
+@keyframes loading-circle-ani {
+  0% {
+    stroke-dashoffset: 157;
+  }
+  75% {
+    stroke-dashoffset: -147;
+  }
+  100% {
+    stroke-dashoffset: -157;
+  }
+}
+@keyframes loading-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /* media */
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
