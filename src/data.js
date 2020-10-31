@@ -86,7 +86,18 @@ export const sceneInfo = [
     objs: {
       container: document.querySelector("#scroll-section-3"),
       canvasCaption: document.querySelector(".canvas-caption"),
+      canvas: document.querySelector(".image-blend-canvas"),
+      context: document.querySelector(".image-blend-canvas").getContext("2d"),
+      imagesPath: [
+        "public/images/blend-image-1.jpg",
+        "public/images/blend-image-2.jpg",
+      ],
+      images: [],
     },
-    values: {},
+    values: {
+      rect1X: [0, 0, { start: 0, end: 0 }],
+      rect2X: [0, 0, { start: 0, end: 0 }],
+      rectStartY: 0,
+    },
   },
 ];
