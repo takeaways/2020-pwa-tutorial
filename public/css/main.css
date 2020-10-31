@@ -8,6 +8,12 @@ body {
   letter-spacing: -0.05em;
   background-color: white;
 }
+body.before-load {
+  overflow: hidden;
+}
+.container {
+  overflow-x: hidden;
+}
 p {
   line-height: 1.6;
 }
@@ -44,6 +50,7 @@ a {
   top: 0;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
 }
 
 .global-nav-links,
@@ -80,6 +87,7 @@ a {
 #show-scene-2 #scroll-section-2 .sticky-elem,
 #show-scene-3 #scroll-section-3 .sticky-elem {
   display: block;
+  will-change: transform, opacity;
 }
 /* scroll */
 .scroll-section {
@@ -182,7 +190,7 @@ a {
   font-size: 1.2rem;
   color: #888;
   max-width: 1000px;
-  margin: -8em auto 0;
+  margin: -24em auto 0;
 }
 .image-blend-canvas.sticky-elem {
   top: 0;
@@ -281,6 +289,7 @@ a {
   .canvas-caption {
     padding: 0;
     font-size: 2rem;
+    margin-top: -8rem;
   }
   #scroll-section-2 .b {
     top: 20%;

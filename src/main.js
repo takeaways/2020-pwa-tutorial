@@ -175,10 +175,10 @@ function playAnimation() {
       break;
     }
     case 2: {
-      // let sequence2 = Math.round(
-      //   calcValues(values.imageSequence, currentYOffset)
-      // );
-      // objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
+      let sequence2 = Math.round(
+        calcValues(values.imageSequence, currentYOffset)
+      );
+      objs.context.drawImage(objs.videoImages[sequence2], 0, 0);
       if (scrollRatio <= 0.5) {
         objs.canvas.style.opacity = calcValues(
           values.canvas_opacity_in,
@@ -524,29 +524,34 @@ function loop() {
   }
 }
 
-window.addEventListener("scroll", () => {
-  checkMenu();
-  handleScroll();
-  if (!rafState) {
-    rafId = requestAnimationFrame(loop);
-    rafState = true;
-  }
-});
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 600) {
-    setLayout();
-  }
-  sceneInfo[3].values.rectStartY = 0;
-});
-window.addEventListener("orientationchange", setLayout);
 window.addEventListener("load", () => {
   document.body.classList.remove("before-load");
-
   setLayout();
   sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   sceneInfo[2].objs.context.drawImage(sceneInfo[2].objs.videoImages[0], 0, 0);
+
+  window.addEventListener("scroll", () => {
+    checkMenu();
+    handleScroll();
+    if (!rafState) {
+      rafId = requestAnimationFrame(loop);
+      rafState = true;
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      setLayout();
+      sceneInfo[3].values.rectStartY = 0;
+    }
+  });
+
+  window.addEventListener("orientationchange", () => {
+    setTimeout(setLayout, 500);
+  });
+
+  document.querySelector(".loading").addEventListener("transitionend", (e) => {
+    document.body.removeChild(e.currentTarget);
+  });
 });
-document.querySelector(".loading").addEventListener("transitionend", (e) => {
-  document.body.removeChild(e.currentTarget);
-});
+
 setCanvasImages();
