@@ -180,7 +180,7 @@
   - minimul-ui: fullscreen과 비슷하나 네이게이션 관련 최소 UI를 제공
 
 ```json
-{ "display": "standalone" }
+{ "display": "standalone"}
 ```
 
 ![display_type](./public/images/display_type.png)
